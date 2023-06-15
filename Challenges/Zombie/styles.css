@@ -1,0 +1,520 @@
+:root {
+    --background: #004449;
+    --dark-blue: #002e3b;
+    --skin: #89d334;
+    --brain: #f589b6;
+    --white: #fff;
+    --bone: #faf89c;
+    --slime: #d7e740;
+    --black: #000222;
+    --head-width: 250px;
+    --head-height: 250px;
+    --min-mouth-width: calc(var(--head-width) * 0.5);
+    --max-mouth-width: calc(var(--head-width) * 0.65);
+    --min-mouth-height: calc(var(--head-width) * 0.15);
+    --max-mouth-height: calc(var(--head-width) * 0.25);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.canvas {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(180deg, var(--background) 30%, var(--dark-blue) 50%, var(--black));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+} 
+.bullet-point {
+    width: 80%;
+    position: absolute;
+    top: -80px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 7px 0 var(--black);
+    opacity: 0;
+    z-index: 10;
+    font-family: 'Creepster', cursive;
+    font-size: 2em;
+    background: var(--white);
+    color: var(--black);
+    transition: opacity 300ms ease-in-out;
+}
+.head:hover .bullet-point {
+    opacity: 1;
+    animation: text-alert 2.5s linear infinite;
+}
+@keyframes text-alert {
+    0% {transform: translate(0, 0) ; }
+    10% {transform: translate(0, 0); }
+    11% { transform: translate(10px, 4px); }
+    12% { transform: translate(0, 0) scale(1.05); }
+    13% { transform: translate(-4px, 4px); }
+    14% { transform: translate(0, 0); }
+    17% { transform: translate(4px, 4px) scale(1.05); }
+    18% { transform: translate(0, 0); }
+    19% { transform: translate(-10px, -4px); }
+    20% { transform: translate(0, 0) scale(1.1); }
+    21% { transform: translate(4px, -4px); }
+    22% { transform: translate(0, 0) scale(1.2); }
+    23% { transform: translate(-10px, 4px); }
+    24% { transform: translate(0, 0); }
+    27% { transform: translate(10px, 4px); }
+    28% { transform: translate(0, 0); }
+    29% { transform: translate(-4px, -4px); }
+    30% { transform: translate(0, 0); }
+}
+.head {
+    width: var(--head-width);
+    height: var(--head-height);
+    background: var(--skin);
+    position: inherit;
+    border-radius: 40px;
+    box-shadow: 0 0 5px 0 var(--black);
+}
+.brain {
+    width: calc(var(--head-width) * 0.45);
+    height: 75px;
+    position: absolute;
+    overflow: hidden;
+    top: -35px;
+    left: -10px;
+    border-radius: 50%;
+    background: var(--background);
+}
+.brain::before {
+    content: "";
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+    background: var(--brain);
+    border-top-left-radius: 40px;
+    box-shadow: 0 0 6px 0 var(--black);
+} 
+.head:hover .brain::before {
+    animation: brain 1s infinite;
+}
+@keyframes brain {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+.left-eye {
+    width: 60px;
+    height: 60px;
+    background: var(--black);
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 35px
+}
+.left-eye::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: var(--white);
+    border-radius: 50%;
+}
+.head:hover .left-eye::before {
+    animation: left-eye-alert 2s ease-out forwards;
+}
+@keyframes left-eye-alert {
+    0% { transform: scale(1); }
+    100% { transform: scale(0.5); }
+}
+.head:not(:hover) .left-eye::before{
+    animation: left-eye-normal 2.5s;
+}
+@keyframes left-eye-normal {
+    0% { transform: scale(0.5); }
+    100% { transform: scale(1); }
+}
+.right-eye {
+    width: 60px;
+    height: 60px;
+    transform: rotate(45deg);
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    right: 35px
+}
+.right-eye::before {
+    content: "";
+    width: 60px;
+    height: 25px;
+    background: var(--black);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 25px;
+}
+.right-eye::after {
+    content: "";
+    width: 60px;
+    height: 25px;
+    background: var(--black);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 25px;
+    transform: rotate(90deg);
+}
+.left-ear {
+    width: 50px;
+    height: 50px;
+    background: var(--skin);
+    opacity: 0.9;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -20px;
+    margin: auto;
+}
+.right-ear {
+    width: 50px;
+    height: 50px;
+    background: var(--skin);
+    opacity: 0.9;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -20px;
+    margin: auto;
+}
+.nose {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0.8;
+}
+.nose::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -5px;
+    bottom: -3px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: var(--black);
+}
+
+.nose::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: -5px;
+    bottom: -3px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: var(--black);
+}
+.out-mouth {
+    width: var(--max-mouth-width);
+    height: var(--max-mouth-height);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    margin: auto;
+}
+.mouth {
+    width: var(--min-mouth-width);
+    height: var(--min-mouth-height);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--black);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.head:hover .mouth {
+    animation: open-mouth 0.65s linear forwards;
+}
+@keyframes open-mouth {
+    0% {
+        width: var(--min-mouth-width);
+        height: var(--min-mouth-height);
+    }
+    100% {
+        width: var(--max-mouth-width);
+        height: var(--max-mouth-height);
+    }
+}
+.head:not(:hover) .mouth {
+    animation: close-mouth 1.8s linear;
+}
+@keyframes close-mouth {
+    0% {
+        width: var(--max-mouth-width);
+        height: var(--max-mouth-height);
+    }
+    100% {
+        width: var(--min-mouth-width);
+        height: var(--min-mouth-height);
+    }
+}
+.in-mouth {
+    width: var(--max-mouth-width);
+    height: 100%;
+    position: absolute;
+    transform: translate(calc(-50% + calc(var(--min-mouth-width) * 0.5)));
+    overflow: hidden;
+    border-radius: 50px;
+}
+.head:hover .in-mouth {
+    animation: open-in-mouth 0.65s linear forwards;    
+}
+.head:not(:hover) .in-mouth {
+    animation: close-in-mouth 1.8s linear forwards;
+}
+@keyframes open-in-mouth {
+    0% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (0) + 0.5)) * 0.5));
+    }
+    50% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (0.5) + 0.5)) * 0.5));
+    }
+    100% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (1) + 0.5)) * 0.5));
+    }
+} 
+@keyframes close-in-mouth {
+    0% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (1) + 0.5)) * 0.5));
+    }
+    50% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (0.5) + 0.5)) * 0.5));
+    }
+    100% {
+        width: var(--max-mouth-width);
+        transform: translate(calc(-50% + (var(--head-width) * (0.15 * (0) + 0.5)) * 0.5));
+    }
+} 
+.tongue {
+    width: 80px;
+    height: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: auto;
+    background-color: var(--brain);
+    border-radius: 80px 80px 0 0;
+}
+.tooth {
+    position: absolute;
+    background: var(--bone);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 0 5px 0 var(--black);
+}
+#tooth-1 {
+    width: 18px;
+    height: 27px;
+    right: 50px;
+    transform: rotate(180deg);
+}
+#tooth-2 {
+    width: 16px;
+    height: 20px;
+    right: 50px;
+    bottom: 0px;
+    right: 15px;
+}
+#tooth-3 {
+    width: 19px;
+    height: 27px;
+    right: 50px;
+    bottom: 0px;
+    right: 95px;
+}
+.slime-container {
+    width: 30px;
+    height: 33px;
+    position: absolute;
+    left: 16px;
+    bottom: -24px;
+}
+.mouth-slime {
+    width: 100%;
+    position: absolute;
+    visibility: collapse;
+    background: var(--slime);
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 2px 3px 0 var(--black);
+}
+.head:hover .mouth-slime {
+    animation: show-slime 1.5s ease-out 0.22s forwards;
+}
+@keyframes show-slime {
+    0% { height: 0px; }
+    100% {
+        height: 100%;
+        visibility: visible;
+    }
+}
+.head:not(:hover) .mouth-slime {
+    animation: hide-slime 0.5s ease-out;
+}
+@keyframes hide-slime {
+    0% { 
+        height: 100%;
+        visibility: visible;
+    }
+    100% {
+        height: 0;
+    }
+}
+.slime-drop {
+    width: 7px;
+    position: absolute;
+    top: 100%;
+    background: var(--slime);
+    border-radius: 0 0 7px 7px;
+    box-shadow: 0 3px 3px 0 var(--black);
+}
+#drop-1 {
+    left: 0;
+}
+.head:hover #drop-1 {
+    animation: show-drop-1 2.2s ease-in forwards;
+} 
+@keyframes show-drop-1 {
+    0% { height: 0; }
+    100% { height: 28px; }
+}
+.head:not(:hover) #drop-1 {
+    animation: hide-drop-1 0.5s ease-out forwards;
+} 
+@keyframes hide-drop-1 {
+    0% { height: 28px; }
+    100% { height: 0; }
+}
+#drop-2 {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.head:hover #drop-2 {
+    animation: show-drop-2 2.8s ease-in forwards;
+} 
+@keyframes show-drop-2 {
+    0% { height: 0; }
+    100% { height: 20px; }
+}
+.head:not(:hover) #drop-2 {
+    animation: hide-drop-2 0.5s ease-out forwards;
+} 
+@keyframes hide-drop-2 {
+    0% { height: 20px; }
+    100% { height: 0; }
+}
+#drop-3 {
+    right: 0;
+}
+.head:hover #drop-3 {
+    animation: show-drop-3 2.3s ease-in forwards;
+} 
+@keyframes show-drop-3 {
+    0% { height: 0; }
+    100% { height: 42px; }
+}
+.head:not(:hover) #drop-3 {
+    animation: hide-drop-3 0.5s ease-out forwards;
+} 
+@keyframes hide-drop-3 {
+    0% { height: 42px; }
+    100% { height: 0; }
+}
+.detail-1 {
+    position: absolute;
+    top: 15px;
+    right: 45px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: var(--bone);
+    opacity: 0.5
+  }
+  .detail-2 {
+    position: absolute;
+    bottom: 60px;
+    left: 20px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--bone);
+    opacity: 0.5;
+    z-index: 3;
+  }
+  .detail-3 {
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: var(--bone);
+    opacity: 0.5;
+    z-index: 3;
+  }
+  .detail-4 {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 12px;
+    left: 55px;
+    border-radius: 50%;
+    background: var(--bone);
+    opacity: 0.5;
+    z-index: 3;
+  }
+  .detail-5 {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 23px;
+    left: 35px;
+    border-radius: 50%;
+    background: var(--bone);
+    opacity: 0.5;
+    z-index: 3;
+  }

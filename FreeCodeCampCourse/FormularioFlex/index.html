@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Encuesta</title>
+    <link rel="stylesheet" href="../css/styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500&family=Noto+Sans&family=Poppins:wght@300&family=Tilt+Warp&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main id="main">
+      <h1 id="title">Dojo Shotokun - Formulario de ingreso </h1>
+      <p id="description"><em>Escuela de Karate-Do, estilo Shotokan. Dedicados siempre a la excelencia</em></p>
+      <form action="#" id="survey-form">
+        <div class="contenedor-form">
+          <label id="name-label" for="name">Nombre</label>
+          <input id="name" class="survey-form__input" type="text" placeholder="Ingresa tu nombre" required>
+        </div>
+        <div class="contenedor-form">
+          <label id="email-label" for="email">Email</label>
+          <input id="email" class="survey-form__input" type="email" placeholder="Ingresa tu email" required>
+        </div>
+        <div class="contenedor-form">
+          <label id="number-label" for="number">Edad</label>
+          <input id="number" class="survey-form__input" type="number" min="14" max="110" placeholder="Ingresa tu edad" required>
+        </div>
+        <div class="contenedor-form" for="peso">
+          <label id="peso-label" for="peso">Peso <small>(opcional)</small></label>
+          <input id="peso" class="survey-form__input" type="number" min="48" max="100" step=".1" placeholder="Ingresa tu peso en kilogramos">
+        </div>
+        <div class="contenedor-form">
+          <p>Sexo</p>
+          <div class="contenedor-opciones">
+            <input id="femenino" name="masculino-femenino" type="radio" value="femenino"><label class="label-item" for="femenino">Femenino</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="masculino" name="masculino-femenino" type="radio" value="masculino"><label class="label-item" for="masculino">Masculino</label>
+          </div>
+        </div>
+        <div class="contenedor-form">
+          <p>¿Qué cinturón eres actualmente en karate? <small>(Si acabas de iniciar en el karate elige 'Blanco')</small></p>
+          <select name="dropdown" id="dropdown"class="survey-form__input">
+            <option value="elige-opcion" selected disabled>Elige una opción</option>
+            <option value="blanco">Blanco</option>
+            <option value="amarillos">Amarillo</option>
+            <option value="naranja">Naranja</option>
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="marron">Marrón</otion>
+            <option value="negro">Negro</option>
+          </select>
+        </div>
+        <div class="contenedor-form">
+          <p >¿Qué te interesa practicar más en tus entrenamientos de Karate?</p>
+          <div class="contenedor-opciones">
+            <input name="karate-preffer" id="kata" type="radio" value="kata"><label for="kata">Kata</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input name="karate-preffer" id="kumite" type="radio" value="kumite"><label for="kumite">Kumite</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input name="karate-preffer" id="ninguno" type="radio" value="no-sabe"><label for="ninguno">No estoy segur@</label>
+          </div>
+        </div>
+        <div class="contenedor-form"> 
+          <p>¿Cuáles de los siguientes coceptos conoces? <small>(marca las que correspondan, hazlo a concienia)</small></p>
+          <div class="contenedor-opciones"> 
+            <input id="karate-do-concepto" type="checkbox" value="karate-do"><label for="karate-do-concepto">Karate-Do</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="shotokan-concepto" type="checkbox" value="shotokan"><label for="shotokan-concepto">Shotokan</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="dojo-concepto" type="checkbox" value="dojo"><label for="dojo-concepto">Dojo</label>
+          </div>    
+          <div class="contenedor-opciones">
+            <input id ="sensei-concepto" type="checkbox" value="sensei"> <label for="sensei-concepto">Sensei</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id ="sempai-concepto" type="checkbox" value="sempai"><label for="sempai-concepto">Sempai</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id ="kiai-concepto" type="checkbox" value="kiai"><label for="kiai-concepto">Kiai</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="kihon-concepto" type="checkbox" value="kihon"><label for="kihon-concepto">Kihon</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="kata-concepto" type="checkbox" value="kata"><label for="kata-concepto">Kata</label>
+          </div>  
+          <div class="contenedor-opciones">
+            <input id="kumite-concepto" type="checkbox" value="kumite"><label for="kumite-concepto">Kumite</label>
+          </div>  
+          <div class="contenedor-opciones">
+            <input id="karategi-concepto" type="checkbox" value="karategi"><label for="karategi-concepto">Karategi</label>
+          </div> 
+          <div class="contenedor-opciones">
+            <input id="bunkai-concepto" type="checkbox" value="bunkai"><label for="bunkai-concepto">Bunkai</label>
+          </div> 
+          <div class="contenedor-opciones">
+            <input id="tsuki-concepto" type="checkbox" value="tsuki"><label for="tsuki-concepto">Tsuki</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="uchi-concepto" type="checkbox" value="uchi"><label for="uchi-concepto">Uchi</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="keri-waza-concepto" type="checkbox" value="keri-waza"><label for="keri-waza-concepto">Keri waza</label>
+          </div>
+          <div class="contenedor-opciones">
+            <input id="dachi-concepto" type="checkbox" value="dachi"><label for="dachi-concepto">Dachi</label>
+          </div>
+        </div>
+        <div class="contenedor-form">
+          <p>Danos una breve descripción de tí</p>
+          <textarea name="comentario" id="comentario" placeholder="Ingresa tu comentario aquí..."></textarea>
+        </div>
+        <div class="contenedor-form">
+          <input id="submit" class="survey-form__input" type="submit" value="Enviar">
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
